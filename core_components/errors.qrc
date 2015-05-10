@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/exceptions">
-        <file>exception_definitions.json</file>
-    </qresource>
-</RCC>
