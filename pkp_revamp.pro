@@ -16,10 +16,4 @@ TARGET = pkp_revamp
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        MainWindow.cpp \
-
-HEADERS  += MainWindow.hpp \
-
-FORMS    += MainWindow.ui \
-    TrainListWidget.ui
+SOURCES += main.cpp

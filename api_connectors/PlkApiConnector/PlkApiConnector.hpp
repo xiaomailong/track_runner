@@ -7,7 +7,6 @@
 
 #include <QPointer>
 
-
 #include "api_connectors/ApiConnector.hpp"
 #include "api_connectors/PlkApiConnector/PlkApiQueryBuilder.hpp"
 #include "api_connectors/PlkApiConnector/PlkApiResponseParser.hpp"
