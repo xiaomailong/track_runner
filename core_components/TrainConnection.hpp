@@ -29,6 +29,13 @@ public:
     void setTravelDuration(QTime duration);
     void setCarrierName(QString name);
 
+    QString getSource();
+    QString getDestination();
+    QDateTime getJourneyStartDate();
+    QDateTime getJourneyEndDate();
+    QTime getTravelDuration();
+    QString getCarrierName();
+
 signals:
 
 public slots:

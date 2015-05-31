@@ -1,16 +1,15 @@
 #ifndef GUIVIEW_HPP
 #define GUIVIEW_HPP
 
-#include <QObject>
+#include <QWidget>
 #include <core_components/TrainSearchRequest.hpp>
 #include <core_components/TrainConnection.hpp>
 #include <core_components/TrainTimetable.hpp>
 
-class GuiView : public QObject
+class GuiView : public QWidget
 {
-    Q_OBJECT
 public:
-    explicit GuiView(QObject *parent = 0);
+    explicit GuiView(QWidget *parent = 0);
 
 signals:
     void requestTimetable(QPointer<TrainSearchRequest> train_search_request);

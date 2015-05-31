@@ -1,2 +1,5 @@
-<RCC/>
-
+<RCC>
+    <qresource prefix="/images">
+        <file>resources/725.GIF</file>
+    </qresource>
+</RCC>

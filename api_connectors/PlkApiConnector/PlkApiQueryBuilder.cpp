@@ -33,7 +33,6 @@ QString PlkApiQueryBuilder::getJsonString(){
     QString destination = this->getTrainSearchRequest()->getDestination();
 
     QString json = "{\"C\":5,\"N\":0,\"S\":\"" + source + "\",\"T\":\"" + destination + "\",\"V\":\"\",\"O\":true,\"B\":false,\"CP\":10,\"D\":\"" + start_date + " " + start_hour +  "\",\"TS\":[\"SZ\",\"DA\",\"LO\",\"AG\"],\"CS\":[\"AR\",\"CARGO\",\"IC\",\"KD\",\"KM\",\"KS\",\"KW\",\"LKA\",\"ODEG\",\"PR\",\"SKM\",\"SKM_3M\",\"WKD\"],\"PS\":[]}";
-
     return json;
 
 }

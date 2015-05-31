@@ -30,3 +30,28 @@ void TrainConnection::setJourneyStartDate(QDateTime date){
 void TrainConnection::setTravelDuration(QTime duration){
     this->travel_duration = duration;
 }
+
+
+QString TrainConnection::getSource(){
+    return this->source;
+}
+
+QString TrainConnection::getDestination(){
+    return this->destination;
+}
+
+QDateTime TrainConnection::getJourneyStartDate(){
+    return this->journey_start_date;
+}
+
+QDateTime TrainConnection::getJourneyEndDate(){
+    return this->journey_end_date;
+}
+
+QTime TrainConnection::getTravelDuration(){
+    return this->travel_duration;
+}
+
+QString TrainConnection::getCarrierName(){
+    return this->carrier_name;
+}

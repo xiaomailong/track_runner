@@ -2,6 +2,7 @@
 #define WAITINGDIALOG_HPP
 
 #include <QDialog>
+#include <QMovie>
 
 namespace Ui {
 class WaitingDialog;

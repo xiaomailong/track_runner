@@ -7,6 +7,10 @@ class DatetimeUtils {
 
 public:
 
+    static QString DEFAULT_DATE_FORMAT(){
+     return "dd.MM.yyyy";
+    }
+
     static QString formatDate(QDateTime date){
         return date.toString("dd.MM.yyyy");
     }

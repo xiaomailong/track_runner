@@ -1,0 +1,1 @@
+http://94.23.254.81/~rozkladpkp/cgi-bin/get_connection.py?tlk=1&direct=1&time=22:38&speed=1&eic=1&regio=1&start=Legnica&date=29.05.15&is_departure=1&end=Wroc%C5%82aw+G%C5%82%C3%B3wny

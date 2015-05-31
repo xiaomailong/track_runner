@@ -15,6 +15,9 @@ class TrainTimetable : public QObject
 public:
     explicit TrainTimetable(QObject *parent = 0);
     void addConnection(QPointer<TrainConnection> connection);
+    int size();
+    QPointer<TrainConnection> at(int index);
+
 signals:
 
 public slots:

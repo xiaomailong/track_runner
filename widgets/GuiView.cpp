@@ -1,6 +1,6 @@
 #include "GuiView.hpp"
 
-GuiView::GuiView(QObject *parent) : QObject(parent)
+GuiView::GuiView(QWidget *parent) : QWidget(parent)
 {
 
 }

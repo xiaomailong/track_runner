@@ -7,6 +7,7 @@ PlkApiResponseParser::PlkApiResponseParser(QObject *parent) : QObject(parent)
 
 QPointer<TrainTimetable> PlkApiResponseParser::parseResponse(QByteArray response){
 
+
     QPointer<TrainTimetable> timetable = new TrainTimetable();
 
     QJsonParseError err;
@@ -27,8 +28,8 @@ QPointer<TrainTimetable> PlkApiResponseParser::parseResponse(QByteArray response
         QPointer<TrainConnection> connection = new TrainConnection();
         connection->setSource(json_travel_source);
         connection->setDestination(json_travel_destination);
-        connection->setJourneyStartDate(QDateTime::fromString(single_result["O"].toString()));
-        connection->setJourneyEndDate(QDateTime::fromString(single_result["P"].toString()));
+        connection->setJourneyStartDate(QDateTime::fromString(single_result["O"].toString(), "dd.MM.yyyy HH:mm"));
+        connection->setJourneyEndDate(QDateTime::fromString(single_result["P"].toString(), "dd.MM.yyyy HH:mm"));
 
 
 
@@ -41,6 +42,7 @@ QPointer<TrainTimetable> PlkApiResponseParser::parseResponse(QByteArray response
         connection->setCarrierName(train_types.join(","));
         timetable->addConnection(connection);
     }
+
 
     return timetable;
 }

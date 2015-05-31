@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>257</width>
-    <height>423</height>
+    <height>436</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QTableView" name="tableView"/>
+    <widget class="QTableView" name="table_view"/>
    </item>
    <item row="1" column="0">
     <widget class="QTabWidget" name="tabWidget">
@@ -43,10 +43,10 @@
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <widget class="QDateTimeEdit" name="dateTimeEdit"/>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QDateTimeEdit" name="input_date"/>
+           <widget class="QPushButton" name="button_now">
             <property name="text">
-             <string>PushButton</string>
+             <string>Now</string>
             </property>
            </widget>
           </widget>
@@ -58,19 +58,19 @@
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
-            <widget class="QLineEdit" name="lineEdit"/>
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QLineEdit" name="input_from"/>
+            <widget class="QLineEdit" name="input_to"/>
            </widget>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="button_switch">
             <property name="text">
-             <string>PushButton</string>
+             <string>Switch</string>
             </property>
            </widget>
           </widget>
          </widget>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="button_search">
           <property name="text">
-           <string>PushButton</string>
+           <string>Search</string>
           </property>
          </widget>
         </widget>

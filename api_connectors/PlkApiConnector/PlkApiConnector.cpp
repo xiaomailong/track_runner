@@ -9,19 +9,27 @@ PlkApiConnector::PlkApiConnector(QObject *parent): ApiConnector(parent){
 }
 
 void PlkApiConnector::processTrainSearchRequest(QPointer<TrainSearchRequest> request){
-    if(this->getState() != ApiConnector::STATE_IDLE){
-        throw new ApiConnectorException("One PlkApiConnector instance can process only one request at once");
+    try{
+        if(this->getState() != ApiConnector::STATE_IDLE){
+            throw new ApiConnectorException("One PlkApiConnector instance can process only one request at once");
+        }
+        this->setState(ApiConnector::STATE_REQUEST_ISSUED);
+        this->setTrainSearchRequest(request);
+        this->configureForConnectionWithPlk();
+        this->network_reply =  this->network_access_manager->post(*this->network_request, PlkApiQueryBuilder::getJsonStringFor(this->getTrainSearchRequest()).toUtf8());
+    }catch(ApiConnectorException* exception){
+        this->setState(ApiConnector::STATE_IDLE);
+        emit this->processingErrorOccured(exception->what());
+    }catch(NotJsonResponseException* exception){
+        this->setState(ApiConnector::STATE_IDLE);
+        emit this->connectionErrorOccured(exception->what());
     }
-    this->setState(ApiConnector::STATE_REQUEST_ISSUED);
-    this->setTrainSearchRequest(request);
-    this->configureForConnectionWithPlk();
-    this->network_reply =  this->network_access_manager->post(*this->network_request, PlkApiQueryBuilder::getJsonStringFor(this->getTrainSearchRequest()).toUtf8());
 }
 
 
 void PlkApiConnector::configureForConnectionWithPlk(){
     if(this->network_request != NULL){
-       return;
+        return;
     }
     this->network_request = new QNetworkRequest();
     this->network_request->setUrl(QUrl("http://wcf.rozklad.plk-sa.pl/wcf20100/Rozklad.svc/C"));
@@ -32,11 +40,21 @@ void PlkApiConnector::configureForConnectionWithPlk(){
 }
 
 void PlkApiConnector::parseResponse(QNetworkReply *repl){
-    this->setState(ApiConnector::STATE_AFTER_REQUEST);
-    QByteArray raw_response = repl->readAll();
-    QPointer<TrainTimetable> timetable = PlkApiResponseParser::parseResponse(raw_response);
-    emit this->onProcessTrainSearchRequestFinished(timetable);
-    this->setState(ApiConnector::STATE_IDLE);
+    try{
+        if(repl->error() != QNetworkReply::NoError){
+            throw new ApiConnectorException("Nie udało się połaczyć z serwerem.");
+        }
+        this->setState(ApiConnector::STATE_AFTER_REQUEST);
+        QByteArray raw_response = repl->readAll();
+        QPointer<TrainTimetable> timetable = PlkApiResponseParser::parseResponse(raw_response);
+        emit this->onProcessTrainSearchRequestFinished(timetable);
+        this->setState(ApiConnector::STATE_IDLE);
+    }catch(ApiConnectorException* exception){
+        this->setState(ApiConnector::STATE_IDLE);
+        emit this->connectionErrorOccured(exception->what());
+    }catch(NotJsonResponseException* exception){
+        emit this->processingErrorOccured(exception->what());
+    }
 }
 
 

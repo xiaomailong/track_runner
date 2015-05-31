@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QDebug>
 
 #include "core_components/DatetimeUtils.hpp"
 #include "api_connectors/ApiConnectorExceptions.hpp"
